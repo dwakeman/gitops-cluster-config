@@ -1,0 +1,14 @@
+apiVersion: keycloak.org/v1alpha1
+kind: Keycloak
+metadata:
+  name: example-keycloak
+  namespace: rh-sso
+  labels:
+    app: sso
+spec:
+  externalAccess:
+    enabled: true
+  instances: 1
+#  storageClassName: ocs-storagecluster-cephfs
+
+# got this error: keycloaks.keycloak.org is forbidden: User "system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller" cannot create resource "keycloaks" in API group "keycloak.org" in the namespace "rh-sso"
