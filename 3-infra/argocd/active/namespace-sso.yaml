@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespace-openshift-pipelines
+  name: namespace-rh-sso
   annotations:
     argocd.argoproj.io/sync-wave: "100"    
 spec:
   destination:
-    namespace: openshift-pipelines
+    namespace: rh-sso
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: 3-infra/namespaces/openshift-pipelines
+    path: 3-infra/namespaces/rh-sso
     repoURL: https://github.com/dwakeman/gitops-cluster-config.git
     targetRevision: main
   syncPolicy:

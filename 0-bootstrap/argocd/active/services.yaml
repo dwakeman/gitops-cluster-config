@@ -23,7 +23,7 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: prod
     server: https://kubernetes.default.svc
-  - namespace: sealed-secrets
+  - namespace: rh-sso
     server: https://kubernetes.default.svc
   - namespace: istio-system
     server: https://kubernetes.default.svc
