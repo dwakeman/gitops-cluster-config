@@ -4,6 +4,8 @@ metadata:
   name: openshift-pipelines
   annotations:
     argocd.argoproj.io/sync-wave: "200"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: openshift-pipelines
