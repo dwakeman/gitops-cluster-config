@@ -9,6 +9,8 @@ spec:
   destinations:
   - namespace: ci
     server: https://kubernetes.default.svc
+  - namespace: ocs
+    server: https://kubernetes.default.svc
   - namespace: dev
     server: https://kubernetes.default.svc
   - namespace: staging
