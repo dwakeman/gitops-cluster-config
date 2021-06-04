@@ -1,7 +1,0 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: rook-ceph-operator-config
-  namespace: openshift-storage # Enter the namespace where you want to install the the OCS Operator.
-data:
-  ROOK_CSI_KUBELET_DIR_PATH: "/var/data/kubelet"

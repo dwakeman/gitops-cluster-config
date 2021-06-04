@@ -1,0 +1,58 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra
+spec:
+  sourceRepos:
+  - https://github.com/dwakeman/gitops-cluster-config.git
+  destinations:
+  - namespace: ci
+    server: https://kubernetes.default.svc
+  - namespace: dev
+    server: https://kubernetes.default.svc
+  - namespace: staging
+    server: https://kubernetes.default.svc
+  - namespace: prod
+    server: https://kubernetes.default.svc
+  - namespace: sealed-secrets
+    server: https://kubernetes.default.svc
+  - namespace: tools
+    server: https://kubernetes.default.svc
+  - namespace: istio-system
+    server: https://kubernetes.default.svc
+  - namespace: openldap
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ""
+    kind: Namespace
+  - group: ""
+    kind: RoleBinding
+  - group: "security.openshift.io"
+    kind: StorageClass
+  - group: "storage.k8s.io"
+    kind: SecurityContextConstraints
+  - group: "console.openshift.io"
+    kind: ConsoleNotification
+  - group: "console.openshift.io"
+    kind: ConsoleLink
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: 3-infra/argocd/active
+    repoURL: https://github.com/dwakeman/gitops-cluster-config.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
