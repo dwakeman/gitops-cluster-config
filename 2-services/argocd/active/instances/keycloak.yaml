@@ -1,0 +1,12 @@
+apiVersion: keycloak.org/v1alpha1
+kind: Keycloak
+metadata:
+  name: example-keycloak
+  namespace: rh-sso
+  labels:
+    app: sso
+spec:
+  externalAccess:
+    enabled: true
+  instances: 1
+#  storageClassName: ocs-storagecluster-cephfs
